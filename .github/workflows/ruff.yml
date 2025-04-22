@@ -20,4 +20,4 @@ jobs:
         run: uv sync --locked --all-extras
 
       - name: Run tests
-        run: ruff check --output-format=github .
+        run: uvx ruff check --output-format=github .
