@@ -6,9 +6,9 @@ build-backend = "setuptools.build_meta"
 name = "pytemp"
 description = "A simple Python package template"
 dynamic = ["version"]
-requires-python = ">=3.12"
+requires-python = ">=3.13"
 readme = "README.md"
-license = "LICENSE.md"
+license = { file = "LICENSE.md"}
 
 [project.urls]
 "Homepage" = "https://github.com/wnowicki/pytemp"
@@ -44,3 +44,10 @@ unfixable = ["B"]
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["E402", "F403"]
 "**/{tests,docs,tools}/*" = ["E402", "S101"]
+
+[dependency-groups]
+dev = [
+    "pre-commit",
+    "pytest",
+    "ruff",
+]
