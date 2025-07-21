@@ -5,3 +5,11 @@ repos:
       - id: ruff
         args: [--fix]
       - id: ruff-format
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    # uv version.
+    rev: 0.7.2
+    hooks:
+      # Compile requirements
+      - id: pip-compile
+        args: [pyproject.toml, --group, dev, --no-deps, -o, requirements.txt]
+        files: ^uv.lock$
