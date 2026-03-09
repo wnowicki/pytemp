@@ -1,12 +1,8 @@
-[build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "pytemp"
 description = "A simple Python package template"
 dynamic = ["version"]
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 readme = "README.md"
 license = { file = "LICENSE.md"}
 
@@ -16,7 +12,7 @@ license = { file = "LICENSE.md"}
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "-ra -q"
+addopts = "-ra -q --cov=app --cov-report xml:coverage.xml --cov-report term"
 testpaths = [
     "tests",
 ]
@@ -25,6 +21,13 @@ pythonpath = "."
 [project.scripts]
 my_app = "app.main:main"
 
+[tool.coverage.run]
+
+omit = [
+    "*/__init__.py",
+    "alembic/*",
+]
+
 [tool.ruff]
 
 line-length = 100
@@ -32,7 +35,23 @@ extend-exclude = ["*.ipynb"]
 
 [tool.ruff.lint]
 # 1. Enable flake8-bugbear (`B`) rules, in addition to the defaults.
-select = ["E4", "E7", "E9", "F", "B", "Q"]
+select = [
+    "E", # All errors
+    "F", # PyFlakes
+    "B", # Bugbear
+    "Q", # Quoting
+    "I", # Isort
+    "S", # flake8-bandit
+    "N", # pep8-naming
+    "A", # flake8-builtins
+    "FAST", # FastAPI specific rules
+    "C4", # flake8-comprehensions
+    # "FIX", # Fixme
+    "LOG", # flake8-logging
+    "RET", # flake8-return
+    "SIM", # flake8-simplify
+    "C90", # mcCabe complexity
+]
 
 # 2. Avoid enforcing line-length violations (`E501`)
 ignore = ["E501"]
@@ -49,5 +68,6 @@ unfixable = ["B"]
 dev = [
     "pre-commit",
     "pytest",
+    "pytest-cov",
     "ruff",
 ]

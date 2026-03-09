@@ -16,7 +16,7 @@ trim_trailing_whitespace = false
 
 # Docstrings and comments use max_line_length = 79
 [*.py]
-max_line_length = 88
+max_line_length = 100
 
 # Use 2 spaces for the HTML files
 [*.html]
