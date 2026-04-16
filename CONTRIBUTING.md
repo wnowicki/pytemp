@@ -13,3 +13,10 @@ pre-commit install
 ```
 
 For more information check [pre-commit](https://pre-commit.com/)
+
+## Pull Requests
+
+- Keep changes focused and small when possible.
+- Add or update tests when behaviour changes.
+- Update documentation when commands or behaviour change.
+- Ensure linting and tests pass before opening a pull request.
