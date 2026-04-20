@@ -35,10 +35,10 @@ def print_board(board: Board):
 def available_moves(board: Board) -> list[int]:
     return [i for i, cell in enumerate(board[0]) if cell == EMPTY]
 
-def winner(makeMoveResult: MakeMoveResult) -> Optional[int]:
-    board = makeMoveResult.board
-    row = makeMoveResult.row
-    column = makeMoveResult.column
+def winner(make_move_result: MakeMoveResult) -> Optional[int]:
+    board = make_move_result.board
+    row = make_move_result.row
+    column = make_move_result.column
     player = board[row][column]
 
     if player == EMPTY:
@@ -66,8 +66,8 @@ def _count_consecutive_in_dir(board: Board, row: int, col: int, delta_row: int, 
 
     return count
 
-def is_final(makeMoveResult: MakeMoveResult) -> bool:
-    return winner(makeMoveResult) is not None or board_is_full(makeMoveResult.board)
+def is_final(make_move_result: MakeMoveResult) -> bool:
+    return winner(make_move_result) is not None or board_is_full(make_move_result.board)
 
 def board_is_full(board: Board) -> bool:
     for row in board:
